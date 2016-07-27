@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style type="text/css">
+        div{
+            width: 350px;
+            border: 3px ridge #22ffc7;
+            position:absolute;
+            background-color: #baffe0;
+            font-family: arial, verdana, sans-serif;
+
+        }
+
+        input{
+            border: 2px solid darkslateblue;
+            float: right;
+
+        }
+        #submit{
+            background-color: #4cff00;
+
+
+        }
+        .error{
+            background-color: #ffd7c1;
+            border: dotted #ff0000;
+                }
+        .right{
+            background-color: #b9ff6f;
+            border: solid #15ff07;
+        }
+        #men,#women{
+            float: none;
+        }
+
+
+
+         </style>
+
+    <script>
+        window.onload=function() {
+
+            var elements = document.getElementsByTagName("input");
+
+
+            for (var i = 0; i < elements.length; i++) {
+                var sub_pass = false;
+
+                elements[i].onblur = function () {
+                    console.log("BLUR");
+                    if (this.value == "") {
+                        this.className = "error";
+                    }
+
+                };
+                elements[i].onchange = function () {
+                    console.log("Right");
+                    this.className = "right";
+
+
+                    if (password.value != password2.value) {
+                        password2.className = "error";
+                        sub_pass = false;
+                    }
+                    else {
+                        sub_pass = true;
+                    }
+
+                };
+
+
+            }
+
+
+            submit.onclick = function (e) {
+                for (i = 0; i < elements.length; i++) {
+
+                    if (elements[i].value == "" || !sub_pass || (!men.checked && !women.checked)) {
+                        e.preventDefault();
+                        alert("You are wrong");
+                        break;
+                    }
+
+                }
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+
+<form>
+    <div>
+        <h2>Form for authorization</h2>
+        <p>
+            <label for="firstName"> Enter your first name</label>
+            <input type="text" placeholder="First name" id="firstName">
+        </p>
+       <p>
+           <label for="secondName"> Enter your second name</label>
+           <input type="text" placeholder="Second name" id="secondName">
+    </p>
+        <p>
+            <label for="login"> Enter your login</label>
+            <input type="text" placeholder="Login" id="login">
+        </p>
+        <p>
+            <label for="password"> Enter your password</label>
+            <input type="password" id="password" placeholder="Password">
+
+        </p>
+        <p>
+            <label for="password2"> Repeat your password</label>
+            <input type="password" id="password2" placeholder="Password">
+
+        </p>
+        <p>
+            <label for="email"> Enter your email</label>
+            <input type="email" id="email" placeholder="example@gmail.com">
+        </p>
+        <p> <h4>Your sex</h4>
+          <label for="men">I am a man</label>
+           <input type="radio" name="female" value="Men" id="men" class="sex"> <br>
+        <label for="women">I am a woman</label>
+           <input type="radio" name="female" value="Women" id="women" class="sex"> <br>
+
+        <p>
+            <input type="submit" value="Submit" id="submit">
+        </p>
+
+
+
+    </div>
+
+
+</form>
+
+
+
+</body>
+</html>
